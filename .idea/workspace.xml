@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cea79488-c49d-4c1a-8dd2-600b5a4dd9e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/source/img/1570778333(1).png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/Array.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/Array.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/yilia/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/yilia/languages/zh-CN.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/yilia/languages/zh-CN.yml" afterDir="false" />
     </list>
@@ -17,12 +18,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1R07vFEx6I2OLf6oh70ntMy0f1M" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zhenyuan-qi.github.io" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../my-project" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\blog.git\source\img" />
+      <recent name="D:\blog.git\assets\img" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -49,7 +62,10 @@
       <workItem from="1568792388759" duration="6720000" />
       <workItem from="1568951859959" duration="5011000" />
       <workItem from="1570499267073" duration="11000" />
-      <workItem from="1570588444443" duration="11923000" />
+      <workItem from="1570588444443" duration="12484000" />
+      <workItem from="1570777410167" duration="6361000" />
+      <workItem from="1570858134139" duration="5301000" />
+      <workItem from="1571290496028" duration="1874000" />
     </task>
     <servers />
   </component>
