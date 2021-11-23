@@ -4,12 +4,12 @@
 
 # Site
 title: 齐震元博客
-subtitle:
-description:
-keywords:
+subtitle: Web开发工程师
+description: 齊震元的博客
+keywords: 前端 JS Vue HTML
 author: 齐震元
-language:
-timezone:
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
