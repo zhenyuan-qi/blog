@@ -73,4 +73,35 @@ tags: vue
 
   
 
+- ### Vue常用修饰符
+
+  ```js
+  /** 事件修饰符*/
+  .stop   //阻止冒泡 event.stopPropagation()
+  .prevent  // 阻止默认行为 event.preventDefault()
+  .capture // 内部元素触发事先在此处理，然后在由内部元素处理
+  .self  //事件是从侦听器绑定的元素本身触发时才触发回调
+  .once //只触发一次
+  .passive //滚动事件立即触发
+  .keyup.enter //键盘修饰符
+  
+  /** v-bind 修饰符*/
+  .prop //被用于绑定DOM属性
+  .sync //更新父组件绑定值的v-on侦听器
+  
+  /** v-model 修饰符*/
+  .number //输入字符串转为数字 
+  .trim  //首位空格过滤
+  .lazy  // 取代input 监听change事件
+  
+  ```
+
+  
+
+  
+
+  
+
+  
+
   
