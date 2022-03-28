@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function deepClone(target) {
+        function handWhile(arr, callback) {
+            const length = arr.length;
+            let index = -1;
+            while (++index < length) {
+                callback(arr[index], index)
+            }
+        }
+        function clone(target, map) {
+            if (target !== null && typeof target === 'object') {
+                let result = Object.prototype.toString.call(target) === "[Object Array]" ? [] : {};
+                if (map[target]) {
+                    return map[target]
+                }
+                map[target] = result;
+                const keys = Object.prototype.toString.call(target) === "[Object Array]" ? undefined : Object.keys(target);
+                function callback(value, key) {
+                    console.log(value, key)
+                    if (keys) {
+                        key = value
+                    }
+                    result[key] = clone(target[key], map)
+                }
+                handWhile(keys || target, callback);
+                return result
+            } else {
+                return target
+            }
+        }
+        let map = {};
+        const result = clone(target, map);
+        map = null;
+        return result
+    }
+    var a = {
+        name: "qizhenyuan",
+        age: 18,
+        reg: /(0-9)/,
+        date: new Date(),
+        sym: Symbol("qizhenyuan")
+    }
+    var b = deepClone(a)
+    // console.log(b)
+
+
+
+
+
+
+
+
+
+
+    const PENDING = "pending";
+    const FULFILLED = "fulfilled";
+    const REJECTED = "rejected";
+    function Promise(executor) {
+        var _this = this;
+        this.status = PENDING;
+        this.value = undefined; //成功结果
+        this.reason = undefined; //失败原因
+        this.onFulfilled = []; //成功回调
+        this.onRejected = []; //失败回调
+        function resolve(value) {
+            if (_this.status === 'pending') {
+                _this.status = FULFILLED;
+                _this.value = value;
+                _this.onFulfilled.forEach(fn => fn(value))
+            }
+        }
+        function reject(reason) {
+            if (_this.status === 'pending') {
+                _this.status = REJECTED;
+                _this.reason = reason;
+                _this.onRejected.forEach(fn => fn(reason))
+            }
+        }
+        try {
+            executor(resolve, reject)
+        } catch (e) {
+            reject(e)
+        }
+    }
+    //`then`方法必须返回一个promise对象 promise.then(resFn,rejFn)
+    Promise.prototype.then = function (onFulfilled, onRejected) {
+        onFulfilled = typeof onFulfilled == "function" ? onFulfilled : undefined;
+        onRejected = typeof onRejected == "function" ? onRejected : undefined;
+        return new Promise((resolve, reject) => {
+            if (this.status == FULFILLED) {
+                resolve(onFulfilled(this.value))
+            } else if (this.status == REJECTED) {
+                resolve(onRejected(this.reason))
+            } else {
+                this.onFulfilled.push(onFulfilled(this.value));
+                this.onRejected.push(onRejected(this.reason));
+            }
+        })
+    }
+</script>
+
+</html>
