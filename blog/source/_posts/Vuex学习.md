@@ -1,7 +1,7 @@
 ---
 title: Vuex搞懂5大核心概念
 date: 2022-03-21 18:02:38
-tags: vue
+tags: [vue,vuex]
 ---
 
 #### Vuex是什么？
@@ -145,7 +145,7 @@ export default({
     //...
     methods:{
         ...mapMutations ([
-            'add', //将 `this.add(num)` 映射为 `this.$store.commit('add', num)
+            'add', //将 `this.add(num)` 映射为 `this.$store.commit('add', num)`
         ]),
         add(){
             this.$store.commit("add",1)

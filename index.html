@@ -29,7 +29,7 @@
                 map[target] = result;
                 const keys = Object.prototype.toString.call(target) === "[Object Array]" ? undefined : Object.keys(target);
                 function callback(value, key) {
-                    console.log(value, key)
+                    // console.log(value, key)
                     if (keys) {
                         key = value
                     }
@@ -54,62 +54,68 @@
         sym: Symbol("qizhenyuan")
     }
     var b = deepClone(a)
-    // console.log(b)
 
 
 
 
 
-
-
-
-
-
-    const PENDING = "pending";
-    const FULFILLED = "fulfilled";
-    const REJECTED = "rejected";
-    function Promise(executor) {
-        var _this = this;
-        this.status = PENDING;
-        this.value = undefined; //成功结果
-        this.reason = undefined; //失败原因
-        this.onFulfilled = []; //成功回调
-        this.onRejected = []; //失败回调
+    function myPromise(executor) {
+        let _this = this;
+        this.status = "pending";
+        this.value = undefined;
+        this.reason = undefined;
+        this.onResolved = [];
+        this.onRejected = []
         function resolve(value) {
-            if (_this.status === 'pending') {
-                _this.status = FULFILLED;
-                _this.value = value;
-                _this.onFulfilled.forEach(fn => fn(value))
+            if (_this.status == "pending") {
+                _this.value = value
+                _this.status = "fulfilled"
             }
         }
         function reject(reason) {
-            if (_this.status === 'pending') {
-                _this.status = REJECTED;
+            if (_this.status == "pending") {
                 _this.reason = reason;
-                _this.onRejected.forEach(fn => fn(reason))
+                _this.status = "rejected"
             }
         }
         try {
             executor(resolve, reject)
-        } catch (e) {
-            reject(e)
+        } catch (error) {
+            reject(error)
         }
     }
-    //`then`方法必须返回一个promise对象 promise.then(resFn,rejFn)
-    Promise.prototype.then = function (onFulfilled, onRejected) {
-        onFulfilled = typeof onFulfilled == "function" ? onFulfilled : undefined;
-        onRejected = typeof onRejected == "function" ? onRejected : undefined;
-        return new Promise((resolve, reject) => {
-            if (this.status == FULFILLED) {
-                resolve(onFulfilled(this.value))
-            } else if (this.status == REJECTED) {
-                resolve(onRejected(this.reason))
-            } else {
-                this.onFulfilled.push(onFulfilled(this.value));
-                this.onRejected.push(onRejected(this.reason));
-            }
-        })
+
+    myPromise.prototype.then = function (onFulfilled, onRejected) {
+        if (this.status == "fulfilled") {
+            onFulfilled(this.value)
+        }
+        if (this.status == "rejected") {
+            onRejected(this.reason);
+        }
+        if (this.status == "pending") {
+            this.onResolved.push(function () { onFulfilled(this.value) })
+            this.onRejected.push(function () { onRejected(this.reason) })
+        }
     }
+
+    let p = new myPromise((res, rej) => {
+        setTimeout(() => {
+            res(111)
+        }, 1000)
+    })
+    console.log(p)
+    p.then(res => {
+
+        console.log(res)
+    })
+
+
+
+
+
+
+
+
 </script>
 
 </html>

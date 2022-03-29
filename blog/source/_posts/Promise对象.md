@@ -23,7 +23,7 @@ function fn(num){
 	})
 }
 // 两秒之后输出成功
-fn("2").then(res=>{
+fn(2).then(res=>{
     console.log(res)
 })
 ```
@@ -89,6 +89,23 @@ Promise.any([promise3,promise4]).then(res=>{
     console.log(err)  //AggregateError: All promises were rejected
 })
 
+```
+
+`Promise.race()`的用法，接收一个数组参数，只要有一个`Promise`成功或者失败，返回的就是成功或者失败。如果迭代包含一个或多个非承诺值和/或已解决/拒绝的承诺，则` Promise.race` 将解析为迭代中找到的第一个值。
+
+```js
+const promise1 = new Promise((res,rej)=>{
+    res("111")
+})
+const promise2 = new Promise((res,rej)=>{
+    rej(new Error("错误"))
+})
+Promise.race([promise1,promise2]).then(res=>{
+    console.log(res)
+}).catch(err=>{
+    console.log(err)
+})
+//output:111
 ```
 
 手写Promise
